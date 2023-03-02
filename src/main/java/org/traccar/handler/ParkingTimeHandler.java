@@ -52,7 +52,7 @@ public class ParkingTimeHandler extends BaseDataHandler {
 
                 // Check if the duration is more than 5 minutes
                 if (duration > 300000) {
-                    position.set("parkingTime", String.valueOf(duration / 1000));
+                    position.set(Position.KEY_PARKING_TIME, String.valueOf(duration / 1000));
                 }
             }
         }

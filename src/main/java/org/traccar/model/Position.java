@@ -49,6 +49,8 @@ public class Position extends Message {
     public static final String KEY_VIDEO = "video";
     public static final String KEY_AUDIO = "audio";
 
+    public static final String KEY_PARKING_TIME = "parkingTime";
+
     // The units for the below four KEYs currently vary.
     // The preferred units of measure are specified in the comment for each.
     public static final String KEY_POWER = "power"; // volts
@@ -162,6 +164,18 @@ public class Position extends Message {
     public void setProtocol(String protocol) {
         this.protocol = protocol;
     }
+
+    /* New Feature for Parking */
+    private Long parkingTime;
+
+    public Long getParkingTime() {
+        return parkingTime;
+    }
+
+    public void setParkingTime(Long parkingTime) {
+        this.parkingTime = parkingTime;
+    }
+    /* END */
 
     private Date serverTime = new Date();
 

@@ -53,6 +53,8 @@ import org.traccar.handler.events.MediaEventHandler;
 import org.traccar.handler.events.MotionEventHandler;
 import org.traccar.handler.events.OverspeedEventHandler;
 
+import org.traccar.handler.ParkingTimeHandler;
+
 import java.util.Map;
 
 public abstract class BasePipelineFactory extends ChannelInitializer<Channel> {
@@ -139,6 +141,7 @@ public abstract class BasePipelineFactory extends ChannelInitializer<Channel> {
                 MotionHandler.class,
                 CopyAttributesHandler.class,
                 EngineHoursHandler.class,
+                ParkingTimeHandler.class, // custom handler
                 ComputedAttributesHandler.class,
                 PositionForwardingHandler.class,
                 DefaultDataHandler.class,

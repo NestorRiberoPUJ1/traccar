@@ -39,21 +39,29 @@ public class ParkingTimeHandler extends BaseDataHandler {
     @Override
     protected Position handlePosition(Position position) {
 
+
         Position lastPosition = cacheManager.getPosition(position.getDeviceId());
         if (lastPosition != null) {
+            var attributes = position.getAttributes();
+            long lastParkingTime = lastPosition.getParkingTime();
+            boolean motion= (boolean) attributes.get("motion");
+
+
             double distance = DistanceCalculator.distance(
                     position.getLatitude(), position.getLongitude(),
                     lastPosition.getLatitude(), lastPosition.getLongitude());
 
             // Check if the distance between current and previous position is less than 100
             // meters
-            if (distance < 100) {
+            if (motion== false) {
                 long duration = position.getFixTime().getTime() - lastPosition.getFixTime().getTime();
-
-                // Check if the duration is more than 5 minutes
-                if (duration > 300000) {
-                    position.set(Position.KEY_PARKING_TIME, String.valueOf(duration / 1000));
-                }
+                System.out.println(duration);
+                duration = duration + (lastParkingTime*1000);
+                System.out.println(duration);
+                position.setParkingTime(duration / 1000);
+            }
+            else{
+                position.setParkingTime(0);
             }
         }
 

@@ -50,6 +50,7 @@ public class Position extends Message {
     public static final String KEY_AUDIO = "audio";
 
     public static final String KEY_PARKING_TIME = "parkingTime";
+    public static final String KEY_LAST_MOTION= "lastMotion";
 
     // The units for the below four KEYs currently vary.
     // The preferred units of measure are specified in the comment for each.
@@ -165,17 +166,6 @@ public class Position extends Message {
         this.protocol = protocol;
     }
 
-    /* New Feature for Parking */
-    private Long parkingTime;
-
-    public Long getParkingTime() {
-        return parkingTime;
-    }
-
-    public void setParkingTime(Long parkingTime) {
-        this.parkingTime = parkingTime;
-    }
-    /* END */
 
     private Date serverTime = new Date();
 
@@ -299,6 +289,16 @@ public class Position extends Message {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    private long parkingTime;
+
+    public long getParkingTime() {
+        return parkingTime;
+    }
+
+    public void setParkingTime(long parkingTime) {
+        this.parkingTime = parkingTime;
     }
 
     private double accuracy;

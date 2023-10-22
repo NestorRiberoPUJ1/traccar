@@ -374,7 +374,7 @@ public final class Keys {
     public static final ConfigKey<Double> EVENT_MOTION_SPEED_THRESHOLD = new DoubleConfigKey(
             "event.motion.speedThreshold",
             List.of(KeyType.CONFIG),
-            0.01);
+            2.7);
 
     /**
      * Global polyline geofence distance. Within that distance from the polyline, point is considered within the
